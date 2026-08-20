@@ -1,7 +1,7 @@
 {
   "name": "@majikah/majik-file-cloud",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Majik File Cloud provides cloud-native infrastructure for securely uploading, downloading, sharing, and managing encrypted Majik Files within the Majikah ecosystem. It is designed to work with the post-quantum secure MJKB file format while providing the primitives and utilities needed to move and share protected files through online services without compromising their cryptographic security.",
   "keywords": [
     "majikah",
