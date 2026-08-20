@@ -1,0 +1,74 @@
+{
+  "name": "@majikah/majik-file-cloud",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Majik File Cloud provides cloud-native infrastructure for securely uploading, downloading, sharing, and managing encrypted Majik Files within the Majikah ecosystem. It is designed to work with the post-quantum secure MJKB file format while providing the primitives and utilities needed to move and share protected files through online services without compromising their cryptographic security.",
+  "keywords": [
+    "majikah",
+    "majik-file",
+    "majik-file-cloud",
+    "cloud-files",
+    "cloud-storage",
+    "secure-cloud-storage",
+    "encrypted-cloud-storage",
+    "secure-file-sharing",
+    "encrypted-file-sharing",
+    "file-upload",
+    "file-download",
+    "file-sharing",
+    "secure-files",
+    "encrypted-files",
+    "cryptography",
+    "post-quantum",
+    "post-quantum-cryptography",
+    "ml-kem",
+    "key-encapsulation",
+    "multi-recipient-encryption",
+    "mjkb",
+    "secure-storage",
+    "cloud-security",
+    "privacy",
+    "zero-knowledge",
+    "wasm"
+  ],
+  "license": "Apache-2.0",
+  "author": "Zelijah",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Majikah/majik-file-cloud.git"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/jedlsf"
+  },
+  "homepage": "https://github.com/Majikah/majik-file-cloud#readme",
+  "bugs": {
+    "url": "https://github.com/Majikah/majik-file-cloud/issues"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build",
+    "package": "npm run build && npm version patch && git push && git push --tags",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "update": "npm i @majikah/majik-file@latest @majikah/majik-key@latest @majikah/majik-signature@latest"
+  },
+  "dependencies": {
+    "@bokuweb/zstd-wasm": "^0.0.27",
+    "@majikah/majik-file": "^0.3.0",
+    "@majikah/majik-key": "^0.4.0",
+    "@majikah/majik-signature": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.11"
+  }
+}
