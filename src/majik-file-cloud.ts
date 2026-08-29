@@ -116,6 +116,7 @@ export class MajikFileCloud extends MajikFile {
       referenceId = null,
       userId,
       compressionLevel,
+      compressor,
     } = options;
 
     MajikFileValidator.assertUserId(userId);
@@ -131,9 +132,9 @@ export class MajikFileCloud extends MajikFile {
       rawMimeType ??
       (originalName ? inferMimeTypeFromFilename(originalName) : null);
 
-    // `this` here is MajikFileCloud (static method invoked on this
-    // class), so _encryptCore's internal `this._preProcess(...)` call
-    // dispatches to the override above — see MajikFile's class doc.
+    // `this` here is MajikFileCloud (static method invoked on this class).
+    // Unlike MajikMessageFile, this class does not override `_preProcess()`
+    // — no preProcessExtra is passed, so the base no-op hook runs as-is.
     const core = await this._encryptCore({
       data,
       identity,
@@ -142,6 +143,7 @@ export class MajikFileCloud extends MajikFile {
       mimeType,
       bypassSizeLimit,
       compressionLevel,
+      compressor,
     });
 
     let r2Key: string;
@@ -173,6 +175,8 @@ export class MajikFileCloud extends MajikFile {
       timestamp: now,
       last_update: now,
       signature: null,
+      compression_level: compressionLevel,
+      compression_alg: core.compressionAlg,
       r2_key: r2Key,
       storage_type: isTemporary ? "temporary" : "permanent",
       is_shared: isShared,
